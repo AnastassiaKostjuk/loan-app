@@ -13,7 +13,9 @@ test.describe('Loan application', () => {
     await expect(loan.paymentValue).toHaveText(loan.defaultPayment);
   });
 
-  test('[TL-HW20-2] changing slider amount recalculates payment', async ({page,}) => {
+  test('[TL-HW20-2] changing slider amount recalculates payment', async ({
+    page,
+  }) => {
     const loan = new LoanPage(page);
     await loan.open();
     const previousPayment = await loan.paymentValue.innerText();
@@ -29,7 +31,9 @@ test.describe('Loan application', () => {
     await expect(loan.paymentValue).not.toHaveText(previousPayment);
   });
 
-  test('[TL-HW20-3] entering an amount recalculates the monthly payment', async ({page,}) => {
+  test('[TL-HW20-3] entering an amount recalculates the monthly payment', async ({
+    page,
+  }) => {
     const loan = new LoanPage(page);
     await loan.open();
     const previousPayment = await loan.paymentValue.innerText();
@@ -53,7 +57,9 @@ test.describe('Loan application', () => {
     await login.expectVisible();
   });
 
-  test('[TL-HW20-5] loan application shows the full name on Loan Details', async ({page,}) => {
+  test('[TL-HW20-5] loan application shows the full name on Loan Details', async ({
+    page,
+  }) => {
     const loan = new LoanPage(page);
     const login = new LoginPage(page);
     await loan.open();
@@ -65,7 +71,9 @@ test.describe('Loan application', () => {
     await expect(details.fullName).toBeDisabled();
   });
 
-  test('[TL-HW20-6] mobile scroll brings Apply Now into the viewport', async ({page,}) => {
+  test('[TL-HW20-6] mobile scroll brings Apply Now into the viewport', async ({
+    page,
+  }) => {
     await page.setViewportSize({ width: 375, height: 667 });
     const loan = new LoanPage(page);
     await loan.open();
@@ -74,7 +82,9 @@ test.describe('Loan application', () => {
     await expect(loan.applyNow).toBeInViewport();
   });
 
-  test('[TL-HW20-7] Continue shows the Success popup on Loan Details', async ({page,}) => {
+  test('[TL-HW20-7] Continue shows the Success popup on Loan Details', async ({
+    page,
+  }) => {
     const loan = new LoanPage(page);
     const login = new LoginPage(page);
     const details = new LoanDetailsPage(page);

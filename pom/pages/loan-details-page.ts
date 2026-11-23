@@ -14,7 +14,8 @@ export class LoanDetailsPage {
   async expectVisible() {
     await expect(this.page).toHaveURL(/loan-decision/i);
     await expect(
-      this.page.getByRole('heading', { name: /loan details/i }),).toBeVisible();
+      this.page.getByRole('heading', { name: /loan details/i }),
+    ).toBeVisible();
     await expect(this.fullName).toBeVisible();
   }
 
@@ -24,7 +25,8 @@ export class LoanDetailsPage {
 
   async expectSuccessPopup() {
     await expect(
-      this.page.getByText('Success!', { exact: true }),).toBeVisible();
+      this.page.getByText('Success!', { exact: true }),
+    ).toBeVisible();
     await expect(this.successOkButton).toBeVisible();
   }
 }

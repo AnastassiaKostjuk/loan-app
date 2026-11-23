@@ -11,11 +11,17 @@ export class LoanPage {
 
   constructor(private readonly page: Page) {
     this.amount = page.getByTestId('id-small-loan-calculator-field-amount');
-    this.amountSlider = page.getByTestId('id-small-loan-calculator-field-amount-slider',);
+    this.amountSlider = page.getByTestId(
+      'id-small-loan-calculator-field-amount-slider',
+    );
     this.period = page.getByTestId('ib-small-loan-calculator-field-period');
-    this.paymentValue = page.getByTestId('ib-small-loan-calculator-field-monthlyPayment',);
+    this.paymentValue = page.getByTestId(
+      'ib-small-loan-calculator-field-monthlyPayment',
+    );
     this.applyNow = page.getByTestId('id-small-loan-calculator-field-apply');
-    this.calculatorHeading = page.getByRole('heading', {name: 'Calculate your monthly payment',});
+    this.calculatorHeading = page.getByRole('heading', {
+      name: 'Calculate your monthly payment',
+    });
   }
 
   async open() {
