@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     container:
+      # The official image contains Chromium, Firefox, WebKit, and their system dependencies.
+      # GitHub Actions pulls this image before running the job steps, so no browser install step is needed.
       image: mcr.microsoft.com/playwright:v1.65.1-noble
       options: --user 1001
     steps:
