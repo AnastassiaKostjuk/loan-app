@@ -1,10 +1,15 @@
 import { expect, test } from '@playwright/test';
-import { mockCalculationResponse, waitForCalculationResponse } from '../helpers/loan-calculation-mocks';
+import {
+  mockCalculationResponse,
+  waitForCalculationResponse,
+} from '../helpers/loan-calculation-mocks';
 import { LoanPage } from '../pom/pages/loan-page';
 
 test.describe('Loan calculation API mocks', () => {
   // The error/malformed-response UI is undocumented; these assertions capture current behavior pending clarification.
-  test('500 with an empty body shows the observed calculation error', async ({page,}) => {
+  test('500 with an empty body shows the observed calculation error', async ({
+    page,
+  }) => {
     const loan = new LoanPage(page);
     await mockCalculationResponse(page, 500, '');
     const responsePromise = waitForCalculationResponse(page);
@@ -18,7 +23,9 @@ test.describe('Loan calculation API mocks', () => {
     await expect(loan.applyNow).toBeEnabled();
   });
 
-  test('200 with an empty body renders the observed undefined payment', async ({page,}) => {
+  test('200 with an empty body renders the observed undefined payment', async ({
+    page,
+  }) => {
     const loan = new LoanPage(page);
     await mockCalculationResponse(page, 200, '');
     const responsePromise = waitForCalculationResponse(page);
@@ -31,7 +38,9 @@ test.describe('Loan calculation API mocks', () => {
     await expect(loan.paymentValue).toHaveText('undefined €');
   });
 
-  test('200 with the wrong response key renders the observed undefined payment', async ({page,}) => {
+  test('200 with the wrong response key renders the observed undefined payment', async ({
+    page,
+  }) => {
     const loan = new LoanPage(page);
     await mockCalculationResponse(
       page,

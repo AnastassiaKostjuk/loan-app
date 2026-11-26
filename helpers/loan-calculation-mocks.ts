@@ -2,7 +2,11 @@ import { Page, Response } from '@playwright/test';
 
 const calculationEndpoint = 'https://backend.tallinn-learning.ee/api/loan-calc';
 
-export async function mockCalculationResponse(page: Page, status: number, body: string,): Promise<void> {
+export async function mockCalculationResponse(
+  page: Page,
+  status: number,
+  body: string,
+): Promise<void> {
   await page.route(`${calculationEndpoint}**`, (route) =>
     route.request().method() === 'GET'
       ? route.fulfill({
