@@ -8,6 +8,7 @@ export class LoanPage {
   readonly paymentValue: Locator;
   readonly defaultPayment = '42.8 €';
   readonly calculatorHeading: Locator;
+  readonly calculationError: Locator;
 
   constructor(private readonly page: Page) {
     this.amount = page.getByTestId('id-small-loan-calculator-field-amount');
@@ -22,6 +23,9 @@ export class LoanPage {
     this.calculatorHeading = page.getByRole('heading', {
       name: 'Calculate your monthly payment',
     });
+    this.calculationError = page.getByText('Oops, something went wrong', {
+      exact: true,
+    });
   }
 
   async open() {
@@ -30,6 +34,10 @@ export class LoanPage {
 
   async expectCalculator() {
     await expect(this.calculatorHeading).toBeVisible();
+  }
+
+  async expectCalculationError() {
+    await expect(this.calculationError).toBeVisible();
   }
 
   async setAmount(value: number) {

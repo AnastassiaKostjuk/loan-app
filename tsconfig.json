@@ -7,5 +7,5 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["tests", "pom", "playwright.config.ts"]
+  "include": ["tests", "pom", "helpers", "playwright.config.ts"]
 }
